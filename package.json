@@ -4,21 +4,25 @@
   "version": "0.0.1",
   "private": true,
   "homepage": "https://github.com/CMaylone/node-quarium/",
-  "author" : {
-    "name" : "Corey Maylone",
+  "author": {
+    "name": "Corey Maylone",
     "email": "CMaylone@gmail.com"
   },
-  "bugs" : {
+  "bugs": {
     "url": "https://github.com/CMaylone/node-quarium/issues"
   },
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "https://github.com/CMaylone/node-quarium/"
   },
   "license": "MIT",
   "dependencies": {
-    "socket.io": "~0.9.16",
-    "express": "~3.2.6",
-    "jade": "~0.31.2"
+    "body-parser": ">=1.8.1",
+    "errorhandler": ">=1.2.0",
+    "express": ">=4.9.0",
+    "jade": ">=1.6.0",
+    "method-override": ">=2.2.0",
+    "morgan": ">=1.3.0",
+    "socket.io": "^1.1.0"
   }
 }
