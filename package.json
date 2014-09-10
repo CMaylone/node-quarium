@@ -1,0 +1,24 @@
+{
+  "name": "node-quarium",
+  "description": "Node.js Aquarium Monitor",
+  "version": "0.0.1",
+  "private": true,
+  "homepage": "https://github.com/CMaylone/node-quarium/",
+  "author" : {
+    "name" : "Corey Maylone",
+    "email": "CMaylone@gmail.com"
+  },
+  "bugs" : {
+    "url": "https://github.com/CMaylone/node-quarium/issues"
+  },
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/CMaylone/node-quarium/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "~0.9.16",
+    "express": "~3.2.6",
+    "jade": "~0.31.2"
+  }
+}
