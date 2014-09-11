@@ -1,7 +1,8 @@
 node-quarium
 ============
-
 Rasberry Pi Aquarium Monitor Built On Node :fish:
+
+![alt-text](https://david-dm.org/cmaylone/node-quarium.png)
 
 # Installation
 
