@@ -16,6 +16,9 @@
     "url": "https://github.com/CMaylone/node-quarium/"
   },
   "license": "MIT",
+  "scripts" : {
+    "test" : "node tests/test.js"
+  },
   "dependencies": {
     "body-parser": ">=1.8.1",
     "errorhandler": ">=1.2.0",
