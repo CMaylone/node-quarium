@@ -29,5 +29,5 @@ npm install
 
 Run the app using:
 ```shell
-node app.js
+node server.js
 ```
