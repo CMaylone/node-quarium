@@ -53,6 +53,20 @@ app.get('/partials/:name', routes.partials);
 // JSON API
 app.get('/api/name', api.name);
 
+app.get('/api/temp', function(req, res, next) {
+  var config = require('./config');
+  var fs = require('fs');
+  fs.readFile('/sys/bus/w1/devices/28-' + config.aquariumTempProbSerial + '/w1_slave', 'utf8', function(err, data) {
+    if(err) return next(err);
+    matches = data.match(/t=([0-9]+)/);
+    temperatureC = parseInt(matches[1]) / 1000;
+    temperatureF = ((temperatureC * 1.8) + 32).toFixed(3);
+    output = '{ "temperature": { "celcius": '+ temperatureC +', "fahrenheit": '+ temperatureF +' } }';
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(output);
+  })
+});
+
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 
