@@ -8,7 +8,7 @@ Rasberry Pi Aquarium Monitor Built On Node :fish:
 
 ## Hardware
 - Rasberry Pi
-- Waterproof DS18B20 Temperature Temp Sensor Digital Thermal Probe
+- Waterproof DS18B20 Temperature Temp Sensor Digital Thermal Probe [[Data Sheet](http://dlnmh9ip6v2uc.cloudfront.net/datasheets/Sensors/Temp/DS18B20.pdf)]
 
 
 
