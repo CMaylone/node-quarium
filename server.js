@@ -1,4 +1,3 @@
-
 var express = require('express'),
     fs = require('fs'),
     http = require('http'),
@@ -22,13 +21,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(errorHandler());
 
 // Load all routes in the routes folder.
 fs.readdirSync(routePath).forEach(function (file) {
   var route = routePath + file;
   require(route)(app);
 });
+
+app.use(errorHandler());
 
 // Set-up socket.io Communication
 io.sockets.on('connection', require('./routes/socket'));
