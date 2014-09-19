@@ -27,7 +27,7 @@ Install dependencies using:
 npm install
 ```
 
-Set-up Rasberri Pi serial interface:
+Set-up Rasberry Pi serial interface:
 ```shell
 sudo modprobe w1-gpio
 sudo modprobe w1-therm
