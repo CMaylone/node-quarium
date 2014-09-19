@@ -21,10 +21,16 @@ sudo wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 sudo dpkg -i node_latest_armhf.deb
 ```
 
-## Running Server
+## Running the Server
 Install dependencies using:
 ```shell
 npm install
+```
+
+Set-up Rasberri Pi serial interface:
+```shell
+sudo modprobe w1-gpio
+sudo modprobe w1-therm
 ```
 
 Run the app using:
