@@ -12,7 +12,7 @@ module.exports.read = function(serial, cb) {
 
   fs.readFile('/sys/bus/w1/devices/28-' + serial + '/w1_slave', 'utf8', function(err, data) {
     if(err) return cb(err);
-    var output = parseInt(data.match(/t=([0-9]+)/)[0]);
+    var output = parseInt(data.match(/t=([0-9]+)/)[1]);
 
     cb(undefined, output);
   })
