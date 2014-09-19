@@ -35,5 +35,5 @@ sudo modprobe w1-therm
 
 Run the app using:
 ```shell
-node server.js
+npm start
 ```
