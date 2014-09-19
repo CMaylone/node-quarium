@@ -40,8 +40,8 @@ module.exports.read = function(serial, unitOfMeasurement, cb) {
 /**
  * Converts a celsius temperature into fahrenheit.
  * @param temperatureCelsius
- * @returns {string} representing the temperature in fahrenheit.
+ * @returns {Number} representing the temperature in fahrenheit.
  */
 function toFahrenheit(temperatureCelsius) {
-  return ((temperatureCelsius * 1.8) + 32).toFixed(3)
+  return parseFloat(((temperatureCelsius * 1.8) + 32).toFixed(3))
 }
