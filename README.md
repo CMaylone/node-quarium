@@ -8,7 +8,7 @@ Rasberry Pi Aquarium Monitor Built On Node :fish:
 
 ## Hardware
 - Rasberry Pi
-- Waterproof DS18B20 Temperature Temp Sensor Digital Thermal Probe
+- Waterproof DS18B20 Temperature Temp Sensor Digital Thermal Probe [[Data Sheet](http://dlnmh9ip6v2uc.cloudfront.net/datasheets/Sensors/Temp/DS18B20.pdf)]
 
 
 
@@ -21,13 +21,19 @@ sudo wget http://node-arm.herokuapp.com/node_latest_armhf.deb
 sudo dpkg -i node_latest_armhf.deb
 ```
 
-## Running Server
+## Running the Server
 Install dependencies using:
 ```shell
 npm install
 ```
 
+Set-up Rasberry Pi serial interface:
+```shell
+sudo modprobe w1-gpio
+sudo modprobe w1-therm
+```
+
 Run the app using:
 ```shell
-node server.js
+npm start
 ```
