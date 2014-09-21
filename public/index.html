@@ -54,6 +54,7 @@
           events: {
             load: function () {
               var chart = this;
+              var redrawn = false;
 
               // set up the updating of the chart every five seconds
               setInterval(function () {
@@ -64,7 +65,10 @@
                     var x = (new Date()).getTime(), // current time
                         y = data.fahrenheit;
                     chart.series[0].addPoint([x, y], true, true);
-                    chart.redraw();
+                    if(!redrawn) {
+                      chart.redraw();
+                      redrawn = true;
+                    }
                   }
                 });
               }, 5000);
