@@ -53,6 +53,7 @@
           marginRight: 10,
           events: {
             load: function () {
+              var chart = this;
 
               // set up the updating of the chart every five seconds
               setInterval(function () {
@@ -62,7 +63,7 @@
                   success: function(data) {
                     var x = (new Date()).getTime(), // current time
                         y = data.fahrenheit;
-                    this.series[0].addPoint([x, y], true, true);
+                    chart.series[0].addPoint([x, y], true, true);
                   }
                 });
               }, 5000);
