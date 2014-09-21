@@ -61,7 +61,6 @@
                   url: '/api/temperature',
                   type: 'GET',
                   success: function(data) {
-                    data = JSON.parse(data);
                     var x = (new Date()).getTime(), // current time
                         y = data.fahrenheit;
                     series.addPoint([x, y], true, true);
