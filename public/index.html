@@ -64,6 +64,7 @@
                     var x = (new Date()).getTime(), // current time
                         y = data.fahrenheit;
                     chart.series[0].addPoint([x, y], true, true);
+                    chart.redraw();
                   }
                 });
               }, 5000);
@@ -105,7 +106,7 @@
         },
         series: [{
           name: 'Temperature data',
-          data: []
+          data: [null]
         }]
       });
     });
