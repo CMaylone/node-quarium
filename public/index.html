@@ -38,6 +38,7 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 
 <script>
+  var chart;
   $(function () {
     $(document).ready(function () {
       Highcharts.setOptions({
@@ -49,29 +50,13 @@
       $('#container').highcharts({
         chart: {
           type: 'spline',
+          renderTo: 'container',
           animation: Highcharts.svg, // don't animate in old IE
           marginRight: 10,
           events: {
             load: function () {
-              var chart = this;
-              var redrawn = false;
-
-              // set up the updating of the chart every five seconds
-              setInterval(function () {
-                $.ajax({
-                  url: '/api/temperature',
-                  type: 'GET',
-                  success: function(data) {
-                    var x = (new Date()).getTime(), // current time
-                        y = data.fahrenheit;
-                    chart.series[0].addPoint([x, y], true, true);
-                    if(!redrawn) {
-                      chart.redraw();
-                      redrawn = true;
-                    }
-                  }
-                });
-              }, 5000);
+              chart = this;
+              requestData();
             }
           }
         },
@@ -110,11 +95,32 @@
         },
         series: [{
           name: 'Temperature data',
-          data: [null]
+          data: []
         }]
       });
     });
   });
+
+  /**
+   * Request new temperature data from the server and load it into the live graph.
+   */
+  function requestData() {
+    $.ajax({
+      url: '/api/temperature',
+      success: function(data) {
+        var series = chart.series[0],
+            shift = series.data.length > 20; // shift if the series is
+        // longer than 20
+
+        // add the point
+        chart.series[0].addPoint([new Date(), data.fahrenheit], true, shift);
+
+        // call it again after five seconds
+        setTimeout(requestData, 5000);
+      },
+      cache: false
+    });
+  }
 </script>
 </body>
 </html>
