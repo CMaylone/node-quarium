@@ -20,7 +20,7 @@ function logTemperature() {
 
     new TemperatureLog({
       temperature: temperature,
-      probe: config.aquariumTempProbeSerial
+      sensor: config.aquariumTempProbeSerial
     }).save(function(err) {
         console.log('Failed to save temperature log.\n%s', err.stack)
       })
