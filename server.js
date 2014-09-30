@@ -6,6 +6,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler'),
+    mongoose = require('mongoose'),
     config = require('./config');
 
 var routePath = './routes/';
@@ -33,7 +34,21 @@ app.use(errorHandler());
 // Set-up socket.io Communication
 io.sockets.on('connection', require('./routes/socket'));
 
-// Start the server.
-server.listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + app.get('port'));
+mongoose.connect(config.mongodb);
+
+mongoose.connection.on('error',function (err) {
+  console.log('Mongoose connection error: ' + err);
+});
+
+
+mongoose.connection.on('connected', function() {
+  console.log('Mongoose connected to %s.', config.mongodb);
+
+  var temperatureLogger = require('./libs/temperatureLogger');
+  temperatureLogger.start(config.loggingInterval);
+
+  // Start the server.
+  server.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
+  });
 });
