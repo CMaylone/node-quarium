@@ -10,6 +10,6 @@ var temperatureLogSchema = new mongoose.Schema({
   sensor: { type: String, required: true }         // The serial number of the sensor
 });
 
-model.exports = mongoose.model('TemperatureLog', temperatureLogSchema);
+module.exports = mongoose.model('TemperatureLog', temperatureLogSchema);
 
 
