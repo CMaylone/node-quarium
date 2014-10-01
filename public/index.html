@@ -3,8 +3,12 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>R-Pi Aquarium Monitor</title>
+
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!--Datetime picker-->
+  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 </head>
 <body>
 
@@ -39,17 +43,23 @@
       <h3 class="panel-title"><strong>Historical</strong></h3>
     </div>
     <div class="panel-body">
-      <form class="form-inline" role="form">
-        <div class="form-group">
-          <label class="sr-only" for="startDate">Start</label>
-          <input id="startDate" name="startDate" type="date" class="form-control">
+      <form id="historicQueryForm" class="form-inline" role="form">
+        <div class='input-group date' id='startDate'>
+          <input type='text' class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
         </div>
 
+        <b>to</b>
+
         <div class="form-group">
-          <label class="sr-only" for="endDate">End</label>
-          <input id="endDate" name="endDate" type="date" class="form-control">
+          <div class='input-group date' id='endDate'>
+            <input type='text' class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+          </div>
         </div>
-        <button class="btn btn-primary">Submit</button>
+        <button id="queryHistoricData" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-stats"></i> Submit</button>
       </form>
 
       <!--Hold Historical Temperature Information-->
@@ -64,6 +74,12 @@
 
 <!--Bootstrap-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<!--Moment-->
+<script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+
+<!--DateTime picker-->
+<script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
 <!--High Charts-->
 <script src="http://code.highcharts.com/highcharts.js"></script>

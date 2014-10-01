@@ -45,7 +45,7 @@ mongoose.connection.on('connected', function() {
   console.log('Mongoose connected to %s.', config.mongodb);
 
   var temperatureLogger = require('./libs/temperatureLogger');
-  temperatureLogger.start(config.loggingInterval);
+  //temperatureLogger.start(config.loggingInterval);
 
   // Start the server.
   server.listen(app.get('port'), function () {
