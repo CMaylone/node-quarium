@@ -15,8 +15,6 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
 app.set('port', process.env.PORT || config.get('port') || 3000);
-//app.set('views', __dirname + '/views');
-//app.set('view engine', 'jade');
 app.use(morgan(config.get('morganLogFormat')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -1,6 +1,9 @@
 # Ignore npm modules
 node_modules/
 
+# Ignore bower files
+public/bower_components/
+
 # Ignore WebStorm files
 .idea
 
