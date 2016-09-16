@@ -35,7 +35,7 @@ io.sockets.on('connection', require('./routes/socket'));
 server.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
   var temperatureLogger = require('./libs/temperatureLogger');
-  temperatureLogger.start();
+  temperatureLogger.start(config.get('loggingInterval'));
 })
 
 
