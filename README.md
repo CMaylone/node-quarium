@@ -2,7 +2,7 @@ node-quarium
 ============
 Rasberry Pi Aquarium Monitor Built On Node :fish:
 
-[![Build Status](https://travis-ci.org/CMaylone/node-quarium.svg?branch=master)](https://travis-ci.org/CMaylone/node-quarium) ![Dependency Status](https://david-dm.org/cmaylone/node-quarium.png)
+[![Build Status](https://travis-ci.org/CMaylone/node-quarium.svg?branch=master)](https://travis-ci.org/CMaylone/node-quarium) ![Dependency Status](https://david-dm.org/cmaylone/node-quarium.svg)
 
 # Installation
 
