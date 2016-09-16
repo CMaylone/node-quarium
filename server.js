@@ -7,17 +7,17 @@ var express = require('express'),
     methodOverride = require('method-override'),
     errorHandler = require('errorhandler'),
     mongoose = require('mongoose'),
-    config = require('./config');
+    config = require('config');
 
 var routePath = './routes/';
 var app = module.exports = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
-app.set('port', process.env.PORT || config.port || 3000);
+app.set('port', process.env.PORT || config.get('port') || 3000);
 //app.set('views', __dirname + '/views');
 //app.set('view engine', 'jade');
-app.use(morgan(config.morganLogFormat));
+app.use(morgan(config.get('morganLogFormat')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
@@ -34,7 +34,7 @@ app.use(errorHandler());
 // Set-up socket.io Communication
 io.sockets.on('connection', require('./routes/socket'));
 
-mongoose.connect(config.mongodb);
+mongoose.connect(config.get('mongodb'));
 
 mongoose.connection.on('error',function (err) {
   console.log('Mongoose connection error: ' + err);

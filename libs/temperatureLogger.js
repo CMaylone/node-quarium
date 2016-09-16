@@ -1,4 +1,4 @@
-var config = require('../config'),
+var config = require('config'),
     temperatureProbe = require('./temperatureProbe'),
     TemperatureLog = require('../models/temperatureLog');
 
@@ -15,12 +15,12 @@ module.exports.stop = function() {
 };
 
 function logTemperature() {
-  temperatureProbe.read(config.aquariumTempProbeSerial, 'C', function(err, temperature) {
+  temperatureProbe.read(config.get('aquariumTempProbeSerial'), 'C', function(err, temperature) {
     if(err) console.log('Failed to read temperature probe.\n%s', err.stack);
 
     new TemperatureLog({
       temperature: temperature,
-      sensor: config.aquariumTempProbeSerial
+      sensor: config.get('aquariumTempProbeSerial')
     }).save(function(err) {
         if(err) console.log('Failed to save temperature log.\n%s', err.stack)
       })
