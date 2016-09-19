@@ -1,13 +1,12 @@
 var express = require('express'),
-    fs = require('fs'),
-    http = require('http'),
-    path = require('path'),
-    morgan = require('morgan'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    errorHandler = require('errorhandler'),
-    mongoose = require('mongoose'),
-    config = require('config');
+  fs = require('fs'),
+  http = require('http'),
+  path = require('path'),
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
+  errorHandler = require('errorhandler'),
+  config = require('config');
 
 var routePath = './routes/';
 var app = module.exports = express();
@@ -32,21 +31,8 @@ app.use(errorHandler());
 // Set-up socket.io Communication
 io.sockets.on('connection', require('./routes/socket'));
 
-mongoose.connect(config.get('mongodb'));
-
-mongoose.connection.on('error',function (err) {
-  console.log('Mongoose connection error: ' + err);
-});
-
-
-mongoose.connection.on('connected', function() {
-  console.log('Mongoose connected to %s.', config.mongodb);
-
+server.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'));
   var temperatureLogger = require('./libs/temperatureLogger');
-  //temperatureLogger.start(config.loggingInterval);
-
-  // Start the server.
-  server.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
-  });
-});
+  temperatureLogger.start(config.get('loggingInterval'));
+})

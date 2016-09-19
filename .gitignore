@@ -7,4 +7,6 @@ public/bower_components/
 # Ignore WebStorm files
 .idea
 
+npm-debug.log
+
 
