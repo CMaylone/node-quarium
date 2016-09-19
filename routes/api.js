@@ -1,6 +1,5 @@
 var config = require('config'),
-    temperatureProbe = require('../libs/temperatureProbe'),
-    TemperatureLog = require('../models/temperatureLog');
+    temperatureProbe = require('../libs/temperatureProbe');
 
 module.exports = function(app) {
   app.get('/api/temperature', function(req, res, next) {

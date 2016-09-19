@@ -25,11 +25,9 @@ module.exports.read = function(serial, unitOfMeasurement, cb) {
       case 'centigrade':
       case 'celsius':
         return cb(undefined, tempCelsius);
-        break;
       case 'f':
       case 'fahrenheit':
         return cb(undefined, toFahrenheit(tempCelsius));
-        break;
       default:
         // Return both units of measurements.
         return cb(undefined, { celsius:tempCelsius, fahrenheit:toFahrenheit(tempCelsius) })
