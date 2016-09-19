@@ -6,7 +6,6 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
   errorHandler = require('errorhandler'),
-  mongoose = require('mongoose'),
   config = require('config');
 
 var routePath = './routes/';
@@ -37,23 +36,3 @@ server.listen(app.get('port'), function () {
   var temperatureLogger = require('./libs/temperatureLogger');
   temperatureLogger.start(config.get('loggingInterval'));
 })
-
-
-// mongoose.connect(config.get('mongodb'));
-
-// mongoose.connection.on('error',function (err) {
-//   console.log('Mongoose connection error: ' + err);
-// });
-
-
-// mongoose.connection.on('connected', function() {
-//   console.log('Mongoose connected to %s.', config.mongodb);
-
-//   var temperatureLogger = require('./libs/temperatureLogger');
-//   //temperatureLogger.start(config.loggingInterval);
-
-//   // Start the server.
-//   server.listen(app.get('port'), function () {
-//     console.log('Express server listening on port ' + app.get('port'));
-//   });
-// });

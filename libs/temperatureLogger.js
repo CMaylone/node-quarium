@@ -1,6 +1,5 @@
 var config = require('config'),
-    temperatureProbe = require('./temperatureProbe'),
-    TemperatureLog = require('../models/temperatureLog');
+    temperatureProbe = require('./temperatureProbe');
 
 var intervalTimer; // stores interval timer
 
@@ -19,12 +18,5 @@ function logTemperature() {
     if(err) return console.log('Failed to read temperature probe.\n%s', err.stack);
 
     console.log(`${temperature} C`)
-
-    // new TemperatureLog({
-    //   temperature: temperature,
-    //   sensor: config.get('aquariumTempProbeSerial')
-    // }).save(function(err) {
-    //     if(err) console.log('Failed to save temperature log.\n%s', err.stack)
-    //   })
   })
 }
