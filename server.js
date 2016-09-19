@@ -2,7 +2,6 @@ var express = require('express'),
   fs = require('fs'),
   http = require('http'),
   path = require('path'),
-  morgan = require('morgan'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
   errorHandler = require('errorhandler'),
@@ -14,7 +13,6 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
 app.set('port', process.env.PORT || config.get('port') || 3000);
-app.use(morgan(config.get('morganLogFormat')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
