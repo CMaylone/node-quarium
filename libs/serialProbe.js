@@ -3,7 +3,7 @@
  * @param cb async callback
  * @returns Integer output from /sys/bus/w1/devices/28-{serial}/w1_slave
  */
-module.exports.read = function(serial, cb) {
+function read(serial, cb) {
   if(!serial) {
     return cb(new Error('device serial number is required.'));
   }
@@ -11,7 +11,7 @@ module.exports.read = function(serial, cb) {
   parseRawReadingFromFile(`/sys/bus/w1/devices/28-${serial}/w1_slave`, cb);
 };
 
-module.exports.parseRawReadingFromFile = function(fileName, cb) {
+function parseRawReadingFromFile(fileName, cb) {
   let fs = require('fs');
 
   fs.readFile(fileName, 'utf8', function(err, data) {
@@ -25,3 +25,6 @@ module.exports.parseRawReadingFromFile = function(fileName, cb) {
     }
   })
 }
+
+module.exports.read = read;
+module.exports.parseRawReadingFromFile = parseRawReadingFromFile;
