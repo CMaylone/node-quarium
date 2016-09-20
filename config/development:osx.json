@@ -1,0 +1,9 @@
+{
+    "port": 3000, // Application port.
+    "aquariumTempProbeSerial": "000005507b51", // Serial Number of the device to read.
+    "mock": {
+        "temperature": true,   // If true the /api/temperature endpoint will make fake temperature data.
+        "ph": true             // If true the /api/ph endpoint will make fake ph data.
+    },
+    "loggingInterval": 30000
+}
